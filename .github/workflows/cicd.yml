@@ -68,4 +68,4 @@ jobs:
           sed -i "s|{{image_tag}}|${{ env.tag }}|g" /kuber/deployment.yaml
           sudo kubectl apply -f /kuber/deployment.yaml
           sudo kubectl apply -f /kuber/service.yaml
-          sudo kubectl get po,svc | grep my-kuber-app
+          sudo kubectl get po,svc | grep diploma
