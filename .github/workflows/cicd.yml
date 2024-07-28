@@ -1,4 +1,4 @@
-name: CI-build_and_deploy-site
+name: CICD
 
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/diploma
