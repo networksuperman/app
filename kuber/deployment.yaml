@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: diploma
-          image: networkdockering/diploma:latest
+          image: networkdockering/diploma:tagname
           ports:
             - name: http
               containerPort: 80
