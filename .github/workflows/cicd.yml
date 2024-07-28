@@ -66,6 +66,6 @@ jobs:
           git clone ${{ env.VARS_APP_REPO }} /${{ env.REPO_DIR}}
           cd /${{ env.REPO_DIR}}
           sed -i "s|{{image_tag}}|${{ env.tag }}|g" /kuber/deployment.yaml
-          sudo kubectl apply -f /kuber/deployment.yaml
-          sudo kubectl apply -f /kuber/service.yaml
+          sudo kubectl apply -f kuber/deployment.yaml
+          sudo kubectl apply -f kuber/service.yaml
           sudo kubectl get po,svc | grep diploma
