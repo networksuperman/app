@@ -51,8 +51,8 @@ jobs:
 
       - name: Deploy app
         if: github.ref_type == 'tag'
-        uses: Consensys/kubernetes-action@master
+        uses: azure/k8s-set-context@v1
         env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
         with:
           args: apply -f app/deployment/ -n app
