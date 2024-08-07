@@ -51,7 +51,7 @@ jobs:
 
       - name: Deploy app
         if: github.ref_type == 'tag'
-        uses: actions-hub/kubectl@master
+        uses: Consensys/kubernetes-action@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
