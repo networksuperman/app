@@ -51,8 +51,8 @@ jobs:
 
       - name: Deploy app
         if: github.ref_type == 'tag'
-        uses: azure/k8s-set-context@v1
+        uses: actions-hub/kubectl@master
         env:
-          KUBE_CONFIG: ${{ secrets.KUBECONFIG }}
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
           args: apply -f app/deployment/ -n app
