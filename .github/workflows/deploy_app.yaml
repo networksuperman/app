@@ -57,5 +57,13 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          args: apply -f app/deployment/ -n app
+          script: |
+            sudo su 
+            sudo apt install git -y
+            rm -rf ./${{ env.REPO_DIR}}
+            git clone ${{ env.VARS_APP_REPO }} ./${{ env.REPO_DIR}}
+            cd ./${{ env.REPO_DIR}}
+            sudo kubectl apply -f ./app/deployment/deployment.yaml
+      
+          
             
