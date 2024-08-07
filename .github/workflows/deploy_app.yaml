@@ -55,4 +55,4 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
-          args: apply -f app/app/deployment/ -n app
+          args: apply -f app/deployment/ -n app
