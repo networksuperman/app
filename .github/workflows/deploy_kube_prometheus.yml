@@ -15,10 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Install Yandex Cloud CLI
-        run: |
-          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash 
-          source "/home/runner/.bashrc"
+      - uses: okar1/yc-cli-install@master
     
       - uses: actions/checkout@v2
       - uses: actions-hub/kubectl@master
