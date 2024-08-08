@@ -25,7 +25,7 @@ jobs:
       - name: Build, and push image to Yandex Cloud Container Registry
         if: github.event_name == 'push' && github.ref_type != 'tag'
         env:
-          CR_REGISTRY: crpqju07qrt8tb11hpra
+          CR_REGISTRY: crp8096sp0do2c2hve0m
           CR_REPOSITORY: nginx-netology
           IMAGE_TAG: ${{ github.ref_name }}
         run: |
@@ -35,7 +35,7 @@ jobs:
       - name: Build, tag, and push image to Yandex Cloud Container Registry
         if: github.ref_type == 'tag'
         env:
-          CR_REGISTRY: crpqju07qrt8tb11hpra
+          CR_REGISTRY: crp8096sp0do2c2hve0m
           CR_REPOSITORY: nginx-netology
           IMAGE_TAG: ${{ github.ref_name }}
         run: |
@@ -51,12 +51,10 @@ jobs:
 
       - name: Deploy app
         if: github.ref_type == 'tag'
-        uses: appleboy/ssh-action@v1.0.3
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          args: apply -f app/deployment/ -n app
+          args: apply -f ./app/deployment/ -n app
           
             
