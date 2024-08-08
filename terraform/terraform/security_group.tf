@@ -1,6 +1,6 @@
 resource "yandex_vpc_security_group" "k8s-main-sg" {
   name        = "k8s-main-sg"
-  description = "Правила группы обеспечивают базовую работоспособность кластера. Примените ее к кластеру и группам узлов."
+  description = "Правила группы обеспечивают базовую работоспособность кластера. Применяем ее к кластеру и группам узлов."
   network_id  = "${yandex_vpc_network.default.id}"
   ingress {
     protocol          = "TCP"
@@ -18,7 +18,7 @@ resource "yandex_vpc_security_group" "k8s-main-sg" {
   }
   ingress {
     protocol       = "ANY"
-    description    = "Правило разрешает взаимодействие под-под и сервис-сервис. Укажите подсети вашего кластера и сервисов."
+    description    = "Правило разрешает взаимодействие под-под и сервис-сервис. Указываем подсети нашего кластера и сервисов."
     v4_cidr_blocks = concat("${yandex_vpc_subnet.public-a.v4_cidr_blocks}", "${yandex_vpc_subnet.public-b.v4_cidr_blocks}", "${yandex_vpc_subnet.public-d.v4_cidr_blocks}", )
     from_port      = 0
     to_port        = 65535
@@ -30,7 +30,7 @@ resource "yandex_vpc_security_group" "k8s-main-sg" {
   }
   ingress {
     protocol          = "TCP"
-    description       = "Правило разрешает входящий трафик из интернета на диапазон портов NodePort. Добавьте или измените порты на нужные вам."
+    description       = "Правило разрешает входящий трафик из интернета на диапазон портов NodePort. Добавляем или изменяем порты на нужные нам."
     v4_cidr_blocks    = ["0.0.0.0/0"]
     from_port         = 30000
     to_port           = 32767
@@ -38,7 +38,7 @@ resource "yandex_vpc_security_group" "k8s-main-sg" {
 
   egress {
     protocol       = "ANY"
-    description    = "Правило разрешает весь исходящий трафик. Узлы могут связаться с Yandex Container Registry, Object Storage, Docker Hub и т. д."
+    description    = "Правило разрешает весь исходящий трафик. Узлы могут связаться с Yandex Container Registry, Object Storage, Docker Hub и т.д."
     v4_cidr_blocks = ["0.0.0.0/0"]
     from_port      = 0
     to_port        = 65535
@@ -47,12 +47,12 @@ resource "yandex_vpc_security_group" "k8s-main-sg" {
 
 resource "yandex_vpc_security_group" "k8s-public-services" {
   name        = "k8s-public-services"
-  description = "Правила группы разрешают подключение к сервисам из интернета. Примените правила только для групп узлов."
+  description = "Правила группы разрешают подключение к сервисам из интернета. Применяем правила только для групп узлов."
   network_id  = "${yandex_vpc_network.default.id}"
 
   ingress {
     protocol       = "TCP"
-    description    = "Правило разрешает входящий трафик из интернета на диапазон портов NodePort. Добавьте или измените порты на нужные вам."
+    description    = "Правило разрешает входящий трафик из интернета на диапазон портов NodePort. Добавляем или изменяем порты на нужные нам."
     v4_cidr_blocks = ["0.0.0.0/0"]
     from_port      = 30000
     to_port        = 32767
@@ -61,7 +61,7 @@ resource "yandex_vpc_security_group" "k8s-public-services" {
 
 resource "yandex_vpc_security_group" "k8s-nodes-ssh-access" {
   name        = "k8s-nodes-ssh-access"
-  description = "Правила группы разрешают подключение к узлам кластера по SSH. Примените правила только для групп узлов."
+  description = "Правила группы разрешают подключение к узлам кластера по SSH. Применяем правила только для групп узлов."
   network_id  = "${yandex_vpc_network.default.id}"
 
   ingress {
@@ -74,7 +74,7 @@ resource "yandex_vpc_security_group" "k8s-nodes-ssh-access" {
 
 resource "yandex_vpc_security_group" "k8s-master-whitelist" {
   name        = "k8s-master-whitelist"
-  description = "Правила группы разрешают доступ к API Kubernetes из интернета. Примените правила только к кластеру."
+  description = "Правила группы разрешают доступ к API Kubernetes из интернета. Применяем правила только к кластеру."
   network_id  = "${yandex_vpc_network.default.id}"
 
   ingress {
