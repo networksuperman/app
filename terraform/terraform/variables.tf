@@ -1,28 +1,10 @@
-# Заменить на ID своего облака
-# https://console.cloud.yandex.ru/cloud?section=overview
-variable "yandex_cloud_id" {
-  default = "b1go9e4ubu2j6qd2p405"
-}
-
-# Заменить на Folder своего облака
-# https://console.cloud.yandex.ru/cloud?section=overview
-variable "yandex_folder_id" {
-  default = "b1geqt5abtnjpoa0oupi"
-}
-
-# S3 bucket name
-variable "s3_bucket_name" {
-  default = "panarin-state-bucket"
-}
-
 # sa_k8s id
 variable "sa_k8s_id" {
-  default = "ajee6d30n765cut4qegl"
+  default = "ajec408kksgo0nv6omni"
 }
 
 # IP
 variable "host_ip" {
-  #default = "92.255.137.0/24"
   default = "0.0.0.0/0"
 }
 
@@ -44,3 +26,6 @@ variable "folder_id" {
 variable "default_zone" {
   default     = "ru-central1-a"
 }
+
+# sa_json_credentials
+variable "yc_sa_terraform_json_credentials" {}
