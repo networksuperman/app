@@ -85,4 +85,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var 'yc_sa_terraform_json_credentials=${{ secrets.YC_SA_TERRAFORM_JSON_CREDENTIALS }}' - var 'сloud_id=${{ secrets.CLOUD_ID }}' -auto-approve
+        run: terraform apply -var 'yc_sa_terraform_json_credentials=${{ secrets.YC_SA_TERRAFORM_JSON_CREDENTIALS }}' - var 'сloud_id="${{ secrets.CLOUD_ID }}"' -auto-approve
