@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: cr.yandex/crp8096sp0do2c2hve0m/nginx-netology:latest
+        image: cr.yandex/crp8096sp0do2c2hve0m/nginx-netology:4.0.0
         ports:
         - containerPort: 80
         
