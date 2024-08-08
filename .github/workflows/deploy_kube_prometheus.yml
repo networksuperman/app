@@ -17,7 +17,7 @@ jobs:
       
       - name: Install Yandex Cloud CLI
         run: |
-          curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -i /home/ubuntu/yandex-cloud 
+          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash 
           source "/home/runner/.bashrc"
     
       - uses: actions/checkout@v2
