@@ -15,8 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - uses: okar1/yc-cli-install@master
-    
       - uses: actions/checkout@v2
       - uses: actions-hub/kubectl@master
         env:
