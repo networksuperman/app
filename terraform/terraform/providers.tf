@@ -23,4 +23,6 @@ terraform {
 
 provider "yandex" {
   service_account_key_file = "${var.yc_sa_terraform_json_credentials}"
+  cloud_id  = "${var.yandex_cloud_id}"
+  folder_id = "${var.yandex_folder_id}"
 }
